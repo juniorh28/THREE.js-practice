@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.5/dat.gui.min.js"></script>-->
+   
+   <script>
+        let scene = new THREE.Scene()
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000)
+        let renderer = new THREE.WebGLRenderer({antialias: true})
+        renderer.setClearColor("#e5e5e5")
+        renderer.setSize(window.innerWidth, window.innerHeight)
+        document.body.appendChild(renderer.domElement)
+
+        window.addEventListener('resize',() => {
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            camera.aspect = window.innerWidth / window.innerHeight
+            camera.updateProjectMatrix()
+        })
+         
+        renderer.render(scene, camera) 
+        //https://threejs.org/docs/#api/en/geometries/SphereGeometry
+        let geometry = new THREE.SphereGeometry(1, 10, 10)
+        
+        //https://threejs.org/docs/#api/en/materials/MeshLambertMaterial
+        let material = new THREE.MeshLambertMaterial({color:0xFFCC00})
+
+    </script>
+</body>
+</html>
